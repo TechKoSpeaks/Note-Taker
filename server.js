@@ -2,8 +2,8 @@
 const express = require("express");
 
 const app = express();
-// Setting a port to run at 8000, listener function (defined later in js) will listen via this port.
-const PORT = 8000;
+// Setting a port to run at 7000, listener function (defined later in js) will listen via this port.
+const PORT = 7000;
 
 // Middleware will parse the data into json and encoded readable data
 app.use(express.urlencoded({ extended: true }));
@@ -13,10 +13,10 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Create require for Routes used in app 
-// require("./routes/apiRoutes")(app);
-// require("./routes/htmlRoutes")(app);
+require("./routes/apiRoute")(app);
+require("./routes/htmlRoute")(app);
 
-// Port listener to ensure app functionality on port 8000
+// Port listener to ensure app functionality on port 7000
 app.listen(PORT, function() {
     console.log("App listening on PORT: " + PORT);
 });
