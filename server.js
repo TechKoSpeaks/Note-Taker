@@ -8,3 +8,15 @@ const PORT = 8000;
 // Middleware will parse the data into json and encoded readable data
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Define what folder the browser will utilize via express
+app.use(express.static("public"));
+
+// Create require for Routes used in app 
+// require("./routes/apiRoutes")(app);
+// require("./routes/htmlRoutes")(app);
+
+// Port listener to ensure app functionality on port 8000
+app.listen(PORT, function() {
+    console.log("App listening on PORT: " + PORT);
+});
