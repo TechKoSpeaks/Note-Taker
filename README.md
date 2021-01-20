@@ -11,7 +11,7 @@ This is a working application that can be used to write, save, and delete notes 
 - [Description](#description)
 - [User Story](#user-story)
 - [Guidelines](#guidelines)
-- [Installation](#installation)
+- [Testing](#testing)
 - [Technologies Used](#technologies-used)
 - [Working Application](#working-application)
 - [License](#license)
@@ -58,8 +58,12 @@ DELETE /api/notes/:id - Should receive a query parameter containing the id of a 
 <br />
 <br />
 
-## Installation
+## Testing
 
+Full application is deployed at: https://hidden-coast-19667.herokuapp.com/
+<br />
+To test separate from heroku:
+<br />
 In the integrated terminal within the Note Taker folder, run these commands:
 <br />
 <strong>npm i</strong>    -    Installs the required json packages
@@ -72,7 +76,10 @@ Go to your browser and type in :
 
 
 ## Working Application
-![Travis Ko README Generator](./note-taker.gif)
+Working App on Heroku:
+![Travis Ko Note Taker](./note-taker-two.gif)
+Testing through Terminal
+![Travis Ko Note Taker](./note-taker.gif)
 
 
 ## License
