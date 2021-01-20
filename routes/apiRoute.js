@@ -1,6 +1,6 @@
 
 
-//Create promisified versions of all functions using node, defining constants and variables below
+// Create promisified versions of all functions using node, defining constants and variables below
 const fs = require("fs");
 const util = require("util");
 var data = JSON.parse(fs.readFileSync("./db/data.json", "utf8"));
@@ -36,20 +36,23 @@ module.exports = function(app) {
         res.json(newNote);
     });
 
-    // Delete a post
+    // Function that deals with deleting a post from the app
     app.delete("/api/notes/:id", function(req, res) {
 
         let noteId = req.params.id;
         let newId = 0;
+        // Console logging deleted note ID for reference
         console.log(`Deleting note with ID ${noteId}`);
-        
+        // Filter data of current note, and return current note ID when note equal to noteId (required params ID)
         data = data.filter(currentNote => {
            return currentNote.id != noteId;
         });
+        // For current note data, change note ID to string and add to newId (originally 0)
         for (currentNote of data) {
             currentNote.id = newId.toString();
             newId++;
         }
+        // Write to files with updated json data
         fs.writeFileSync("./db/data.json", JSON.stringify(data));
         res.json(data);
     }); 

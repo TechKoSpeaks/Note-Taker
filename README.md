@@ -1,73 +1,81 @@
 # Note-Taker
 
-Unit 11 Express Homework: Note Taker
 
 ## Description
-Create an application that can be used to write, save, and delete notes. This application will use an express backend and save and retrieve note data from a JSON file.
+
+This is a working application that can be used to write, save, and delete notes within a browser. This application uses an express backend server to save and retrieve note data from a JSON file. This app is also deployed via Heroku as opposed to the traditional GitHub.
 
 
-The application frontend has already been created, it's your job to build the backend and connect the two.
+## Table of Contents
 
+- [Description](#description)
+- [User Story](#user-story)
+- [Guidelines](#guidelines)
+- [Installation](#installation)
+- [Technologies Used](#technologies-used)
+- [Working Application](#working-application)
+- [License](#license)
+<br />
 
-The following HTML routes should be created:
+## User Story
 
+AS A user, I want to be able to write and save notes
+<br />
+I WANT to be able to delete notes I've written before
+<br />
+SO THAT I can organize my thoughts and keep track of tasks I need to complete
+<br />
+<br />
 
-GET /notes - Should return the notes.html file.
+## Guidelines:
 
+Utilizing GET /notes - will return the notes.html file.
 
-GET * - Should return the index.html file
+GET * - will return the index.html file
 
-
-
-
-The application should have a db.json file on the backend that will be used to store and retrieve notes using the fs module.
-
+The application also has a db.json file on the backend that is utilized to store and retrieve notes using the fs module.
 
 The following API routes should be created:
 
-
 GET /api/notes - Should read the db.json file and return all saved notes as JSON.
-
 
 POST /api/notes - Should receive a new note to save on the request body, add it to the db.json file, and then return the new note to the client.
 
 
 DELETE /api/notes/:id - Should receive a query parameter containing the id of a note to delete. This means you'll need to find a way to give each note a unique id when it's saved. In order to delete a note, you'll need to read all notes from the db.json file, remove the note with the given id property, and then rewrite the notes to the db.json file.
 
+## Technologies Used
 
-
-
-
-## User Story
-AS A user, I want to be able to write and save notes
+- APIs
+- node.js
+- JSON
+- Heroku
+- Arrow Functions
+- Back End Server function
+- Unit Testing
+- Classes
+- Inheritance
 <br />
-I WANT to be able to delete notes I've written before
 <br />
-SO THAT I can organize my thoughts and keep track of tasks I need to complete
 
-## Business Context
-For users that need to keep track of a lot of information, it's easy to forget or be unable to recall something important. Being able to take persistent notes allows users to have written information available when needed.
+## Installation
 
-## Acceptance Criteria
-Application should allow users to create and save notes.
-Application should allow users to view previously saved notes.
-Application should allow users to delete previously saved notes.
+In the integrated terminal within the Note Taker folder, run these commands:
+<br />
+<strong>npm i</strong>    -    Installs the required json packages
+<br />
+<strong>node server.js</strong>     -      Will start the server listening at port 7000
+<br />
 
-## Deploying the App
-You will not be able to deploy your server side code on GitHub pages. This app should be deployed on Heroku. Carefully follow the Heroku Guide for getting your app deployed on Heroku.
-
-
+Go to your browser and type in :
+<strong>http://localhost:7000</strong>
 
 
-Submission on BCS
-You are required to submit the following:
+## Working Application
 
 
-The URL of the deployed application. This should be the link to the url provided by Heroku. Be sure not to submit a link to the Heroku dashboard.
-
-
-The URL of the GitHub repository
-
-
-
-© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+## License
+<br />
+This is licensed under MIT.
+<br />
+© 2021 Travis Ko Coding
