@@ -72,6 +72,7 @@ Go to your browser and type in :
 
 
 ## Working Application
+![Travis Ko README Generator](./public/note-taker.gif)
 
 
 ## License
