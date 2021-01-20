@@ -3,7 +3,7 @@ const express = require("express");
 
 const app = express();
 // Setting a port to run at 7000, listener function (defined later in js) will listen via this port.
-const PORT = 7000;
+const PORT = process.env.PORT || 7000;
 
 // Middleware will parse the data into json and encoded readable data
 app.use(express.urlencoded({ extended: true }));
