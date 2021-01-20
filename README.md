@@ -3,7 +3,7 @@
 
 ## Description
 
-This is a working application that can be used to write, save, and delete notes within a browser. This application uses an express backend server to save and retrieve note data from a JSON file. This app is also deployed via Heroku as opposed to the traditional GitHub.
+This is a working application that can be used to write, save, and delete notes within a browser. This application uses an express backend server to save and retrieve note data from a JSON file. This app is also deployed via Heroku for the back end server as opposed to being hosted on the traditional GitHub.
 
 
 ## Table of Contents
