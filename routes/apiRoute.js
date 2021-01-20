@@ -1,38 +1,36 @@
 
-// Linking the noteContent in db to this routes.
-var noteContent = require("../db/noteContent")
 
-//Create promise-based versions of functions using node style callbacks
+//Create promisified versions of all functions using node, defining constants and variables below
 const fs = require("fs");
 const util = require("util");
+var data = JSON.parse(fs.readFileSync("./db/data.json", "utf8"));
 const writeFileAsync = util.promisify(fs.writeFile);
 
-// Create a route
+// Creating the route with module.exports for the app
 module.exports = function(app) {
 
-    //Display all notes
+    // Display all of the notes listed
     app.get("/api/notes", function(req, res) {
-        res.json(noteContent);
+        res.json(data);
     });
 
-    //Create new posts
+    // Creating new notes on the app
     app.post("/api/notes", function(req, res) {
-        // noteContent.push(req.body);
-        // res.json(noteContent);
-
+// Writing these to a new note body
         let newNote = req.body;
 
-        // check to find last id in our notes json file, and assign the note to one greater than that id
-        let lastId = noteContent[noteContent.length - 1]["id"];
+        // Checking to find last ID within the json file, and assigning that note one greater than the original ID
+        let lastId = data[data.length - 1]["id"];
         let newId = lastId + 1;
         newNote["id"] = newId;
-        
+        // Console logging the body of the note created for reference 
         console.log("Req.body:", req.body);
-        noteContent.push(newNote);
+        // Pushing that data to a new note
+        data.push(newNote);
 
-        // write to the noteContent.json file as well
-        writeFileAsync("./db/noteContent.json", JSON.stringify(noteContent)).then(function() {
-            console.log("noteContent.json has been updated!");
+        // write to the data.json file as well
+        writeFileAsync("./db/data.json", JSON.stringify(data)).then(function() {
+            console.log("data.json has been updated!");
         });
 
         res.json(newNote);
@@ -40,29 +38,20 @@ module.exports = function(app) {
 
     // Delete a post
     app.delete("/api/notes/:id", function(req, res) {
-        // let chosen = req.params.id;        
-        // console.log(chosen);
 
-        console.log("Req.params:", req.params);
-        let chosenId = parseInt(req.params.id);
-        console.log(chosenId);
-
-
-        for (let i = 0; i < noteContent.length; i++) {
-            if (chosenId === noteContent[i].id) {
-                // delete noteContent[i];
-                noteContent.splice(i,1);
-                
-                let noteJSON = JSON.stringify(noteContent, null, 2);
-
-                writeFileAsync("./db/noteContent.json", noteJSON).then(function() {
-                console.log ("Chosen note has been deleted!");
-            });                 
-            }
+        let noteId = req.params.id;
+        let newId = 0;
+        console.log(`Deleting note with ID ${noteId}`);
+        
+        data = data.filter(currentNote => {
+           return currentNote.id != noteId;
+        });
+        for (currentNote of data) {
+            currentNote.id = newId.toString();
+            newId++;
         }
-        res.json(noteContent);
-        // data = data.filter(function(res) {
-        //     return noteContent.item.replace(/ /g, '-') !== req.params.id;
-    });
+        fs.writeFileSync("./db/data.json", JSON.stringify(data));
+        res.json(data);
+    }); 
         
 };
